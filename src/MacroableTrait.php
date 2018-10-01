@@ -12,7 +12,7 @@ trait MacroableTrait
     public function __call($name, $parameters)
     {
         if (!isset(self::$macros[$name])) {
-            echo 'Cannot find given macros!';
+            throw new \BadMethodCallException(\sprintf('Macros "%s" not exists!', $name));
         }
 
         $macro = self::$macros[$name];
@@ -21,6 +21,6 @@ trait MacroableTrait
             return \call_user_func_array($macro->bindTo($this, static::class), $parameters);
         }
 
-        \call_user_func_array($macro, $parameters);
+        return \call_user_func_array($macro, $parameters);
     }
 }

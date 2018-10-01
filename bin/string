@@ -10,4 +10,18 @@ StringHelper::macro('firstLetterToUpper', function () {
 });
 
 $str = new StringHelper('THIS IS TEST STRING');
+
+try {
+    $str->notExistsMethod();
+
+    $db->connect();
+    // logic...
+} catch (BadMethodCallException $e) {
+    echo $e->getMessage() . \PHP_EOL;
+} catch (\RuntimeException $e) {
+
+} finally {
+    $db->disconnect();
+}
+
 echo $str->toLowerCase()->firstLetterToUpper() . \PHP_EOL;

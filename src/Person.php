@@ -35,10 +35,10 @@ class Person implements \JsonSerializable
         if (\method_exists($this, $getter)) {
             return $this->$getter();
         } elseif (\method_exists('set' . $methodName)) {
-            echo 'Cannot access property ' . $name;
-        } else {
-            echo \sprintf('Property %s not exists!', $name);
+            throw new \LogicException(\sprintf('Cannot access property %s', $name));
         }
+
+        throw new \LogicException(\sprintf('Property %s not exists!', $name));
     }
 
     public function __set($name, $value)
@@ -49,10 +49,10 @@ class Person implements \JsonSerializable
         if (\method_exists($this, $setter)) {
             $this->$setter($value);
         } elseif (\method_exists($this, 'get'. $methodName)) {
-            echo \sprintf('Property %s read only!', $name);
-        } else {
-            echo \sprintf('Property %s not exists!', $name);
+            throw new \LogicException(\sprintf('Property %s read only!' , $name));
         }
+
+        throw new \LogicException(\sprintf('Property %s not exists!', $name));
     }
 
     public function __isset($name)
@@ -93,7 +93,7 @@ class Person implements \JsonSerializable
     public function setAge($age)
     {
         if ($age > self::MAX_POSSIBLE_AGE) {
-            echo \sprintf('Impossible age %d', $age) . \PHP_EOL;
+            throw new \RuntimeException(\sprintf('Impossible age %d', $age));
         }
 
         $this->age = $age;
