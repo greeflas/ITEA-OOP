@@ -2,15 +2,22 @@
 
 class Person
 {
+    private static $maxAge = 0;
+
     private $firstName;
     private $lastName;
     private $age;
+
+    public static function getOldest()
+    {
+        return self::$maxAge;
+    }
 
     public function __construct($firstName, $lastName, $age = null)
     {
         $this->firstName = $firstName;
         $this->lastName = $lastName;
-        $this->age = $age;
+        $this->setAge($age);
     }
 
     public function getFirstName()
@@ -41,5 +48,9 @@ class Person
     public function setAge($age)
     {
         $this->age = $age;
+
+        if ($age > self::$maxAge) {
+            self::$maxAge = $age;
+        }
     }
 }
