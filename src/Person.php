@@ -6,6 +6,13 @@ class Person
     private $lastName;
     private $age;
 
+    public function __construct($firstName, $lastName, $age = null)
+    {
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        $this->age = $age;
+    }
+
     public function getFirstName()
     {
         return $this->firstName;

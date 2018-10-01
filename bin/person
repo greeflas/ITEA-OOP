@@ -3,8 +3,9 @@
 
 require_once __DIR__ . '/../src/Person.php';
 
-$p1 = new Person();
-$p2 = new Person();
+$p1 = new Person('Petr', 'Ivanov');
+$p2 = new Person('Anna', 'Petrova', 26);
 
-$p1->setFirstName('Petr');
 echo $p1->getFirstName() . \PHP_EOL;
+echo $p2->getLastName() . \PHP_EOL;
+echo $p2->getAge() . \PHP_EOL;
