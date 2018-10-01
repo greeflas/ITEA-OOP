@@ -2,6 +2,8 @@
 
 class Person
 {
+    const MAX_POSSIBLE_AGE = 150;
+
     private static $maxAge = 0;
 
     private $firstName;
@@ -47,6 +49,10 @@ class Person
 
     public function setAge($age)
     {
+        if ($age > self::MAX_POSSIBLE_AGE) {
+            echo \sprintf('Impossible age %d', $age) . \PHP_EOL;
+        }
+
         $this->age = $age;
 
         if ($age > self::$maxAge) {
