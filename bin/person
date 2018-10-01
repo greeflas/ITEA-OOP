@@ -1,0 +1,9 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/../src/Person.php';
+
+$p1 = new Person();
+$p2 = new Person();
+
+echo $p1->firstName;
