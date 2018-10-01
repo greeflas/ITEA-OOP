@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/../src/StringHelper.php';
+
+StringHelper::macro('firstLetterToUpper', function () {
+    $this->str = \ucfirst($this->str);
+
+    return $this;
+});
+
+$str = new StringHelper('THIS IS TEST STRING');
+echo $str->toLowerCase()->firstLetterToUpper() . \PHP_EOL;
