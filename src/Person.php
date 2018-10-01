@@ -1,6 +1,6 @@
 <?php
 
-class Person
+class Person implements \JsonSerializable
 {
     const MAX_POSSIBLE_AGE = 150;
 
@@ -20,6 +20,11 @@ class Person
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->setAge($age);
+    }
+
+    public function __toString()
+    {
+        return $this->firstName . ' ' . $this->lastName . \PHP_EOL;
     }
 
     public function getFirstName()
@@ -58,5 +63,14 @@ class Person
         if ($age > self::$maxAge) {
             self::$maxAge = $age;
         }
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'firstName' => $this->firstName,
+            'lastName' => $this->lastName,
+            'age' => $this->age,
+        ];
     }
 }

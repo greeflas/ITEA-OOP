@@ -15,3 +15,7 @@ echo $p2->getLastName() . \PHP_EOL;
 echo $p2->getAge() . \PHP_EOL;
 
 echo Person::getOldest() . \PHP_EOL;
+
+echo $p1;
+
+var_dump(json_encode($p1));
