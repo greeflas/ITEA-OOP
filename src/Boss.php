@@ -14,5 +14,13 @@ class Boss
         foreach ($this->employees as $employee) {
             $employee->work();
         }
+
+        // TODO: delay before pause logic
+
+        foreach ($this->employees as $employee) {
+            if ($employee instanceof EatInterface) {
+                $employee->eat();
+            }
+        }
     }
 }
