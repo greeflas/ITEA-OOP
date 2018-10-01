@@ -27,6 +27,44 @@ class Person implements \JsonSerializable
         return $this->firstName . ' ' . $this->lastName . \PHP_EOL;
     }
 
+    public function __get($name)
+    {
+        $methodName = \ucfirst($name);
+        $getter = 'get' . $methodName;
+
+        if (\method_exists($this, $getter)) {
+            return $this->$getter();
+        } elseif (\method_exists('set' . $methodName)) {
+            echo 'Cannot access property ' . $name;
+        } else {
+            echo \sprintf('Property %s not exists!', $name);
+        }
+    }
+
+    public function __set($name, $value)
+    {
+        $methodName = \ucfirst($name);
+        $setter = 'set' . $methodName;
+
+        if (\method_exists($this, $setter)) {
+            $this->$setter($value);
+        } elseif (\method_exists($this, 'get'. $methodName)) {
+            echo \sprintf('Property %s read only!', $name);
+        } else {
+            echo \sprintf('Property %s not exists!', $name);
+        }
+    }
+
+    public function __isset($name)
+    {
+        return isset($this->$name);
+    }
+
+    public function __unset($name)
+    {
+        $this->$name = null;
+    }
+
     public function getFirstName()
     {
         return $this->firstName;

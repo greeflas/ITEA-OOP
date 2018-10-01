@@ -19,3 +19,11 @@ echo Person::getOldest() . \PHP_EOL;
 echo $p1;
 
 var_dump(json_encode($p1));
+
+$p1->firstName = 'Petro';
+var_dump($p1->firstName);
+
+var_dump(isset($p1->firstName));
+
+unset($p1->firstName);
+var_dump($p1->firstName);
