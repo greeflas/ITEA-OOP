@@ -1,7 +1,6 @@
 <?php
 
-require_once __DIR__ . '/AbstractEmployee.php';
-require_once __DIR__ . '/EatInterface.php';
+namespace App\Fabric;
 
 class HumanEmployee extends AbstractEmployee implements EatInterface
 {

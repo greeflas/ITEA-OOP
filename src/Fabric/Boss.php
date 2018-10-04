@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Fabric;
+
 class Boss
 {
     private $employees = [];

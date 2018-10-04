@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/AbstractEmployee.php';
+namespace App\Fabric;
 
 class RobotEmployee extends AbstractEmployee
 {

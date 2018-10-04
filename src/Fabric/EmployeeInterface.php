@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Fabric;
+
 interface EmployeeInterface
 {
     public function work();

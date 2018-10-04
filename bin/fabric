@@ -1,9 +1,20 @@
 #!/usr/bin/env php
 <?php
 
-require_once __DIR__ . '/../src/RobotEmployee.php';
-require_once __DIR__ . '/../src/HumanEmployee.php';
-require_once __DIR__ . '/../src/Boss.php';
+\spl_autoload_register(function ($fullClassName) {
+    $parts = \explode('\\', $fullClassName);
+    \array_shift($parts);
+
+    $className = \array_pop($parts);
+
+    $path = \implode(\DIRECTORY_SEPARATOR, $parts);
+
+    require \sprintf('src/%s/%s.php', $path, $className);
+});
+
+use App\Fabric\Boss;
+use App\Fabric\HumanEmployee;
+use App\Fabric\RobotEmployee;
 
 $boss = new Boss();
 $boss->addEmployee(new HumanEmployee());

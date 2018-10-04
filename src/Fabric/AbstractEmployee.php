@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/EmployeeInterface.php';
+namespace App\Fabric;
 
 abstract class AbstractEmployee implements EmployeeInterface
 {
